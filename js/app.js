@@ -79,6 +79,47 @@ const loadData = async (id) => {
 
 const displayDataDetails = (param) =>{
     document.getElementById('dataModalLabel').innerText = param.tool_name;
+    document.getElementById('data-details').innerHTML = `
+    <div class="d-flex gap-5 align-items-center justify-content-evenly">
+                <div class="border border-danger-subtle rounded bg-danger-subtle bg-opacity-25 p-2">
+                        <p class="fw-bold">${param.description}
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis incidunt sint expedita, tenetur quo similique dolore soluta! Quisquam, repudiandae sunt.
+                        </p>
+                        <div class="row row-cols-3 g-3">
+                            <div class="col bg-light rounded">
+                                <p class="text-success"></p>
+                            </div>
+                            <div class="col bg-light rounded">
+                                <p class="text-warning"></p>
+                            </div>
+                            <div class="col bg-light rounded">
+                                <p class="text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row row-cols-2 g-3">
+                            <div class="col rounded">
+                                <ul>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                            <div class="col rounded">
+                                <ul>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+                <div>
+                    <img src="${param.image_link[0]}" class="h-100 w-100 img-fluid" alt="">
+                </div>
+            </div>
+    `
 }
 
 
