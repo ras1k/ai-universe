@@ -12,7 +12,6 @@ const displayAi = (params, dataLimit) =>{
         params = params.slice(0, dataLimit);
 
     }
-
     // params = params.slice(0, 6);
     params.forEach(param =>{
         console.log(param);
@@ -32,20 +31,20 @@ const displayAi = (params, dataLimit) =>{
                 
             </div>
             <div class="card-footer">
-                <div class="d-flex align-items-center justify-content-between gap-5">
+                <div class="d-flex align-items-center justify-content-between">
                 <div>
                     <h5 class="card-title">${param.name? param.name : 'No Name Found'}</h5>
                     <p> <i class="fa-solid fa-calendar"></i> ${param.published_in? param.published_in : 'No Date Found'}</p>
                 </div>
-                <div style="background-color: rgba(165, 79, 79, 0.308); border: 1px; border-radius: 50%; padding: 15px">
+                <button onclick="loadData(${param.id})" type="button" class="btn" style="background-color: rgba(165, 79, 79, 0.308); border: 1px; border-radius: 50%; padding: 15px" data-bs-toggle="modal" data-bs-target="#dataModal">
                 <i class="fa-solid fa-arrow-right" style="color: #b60202;"></i>
-                </div>
+                </button>
                 </div>
             </div>
-        </div>
-        `;
+        </div>`;
         paramContainer.appendChild(paramDiv);
     })
+    toggleSpinner(false);
 }
 
 const processData = (dataLimit) => {
@@ -64,7 +63,26 @@ const toggleSpinner = isLoading => {
 }
 
 document.getElementById('btn-show-all').addEventListener('click', function () {
+    paramContainer.innerHTML='';
     processData();
-    toggleSpinner(false);
-})
+    toggleSpinner(true);
+    document.getElementById('btn-show-all').classList.add('d-none');
+});
+
+//details button
+const loadData = async (id) => {
+    const url = `https://openapi.programming-hero.com/api/ai/tool/0${id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayDataDetails(data.data);
+}
+
+const displayDataDetails = (param) =>{
+    document.getElementById('dataModalLabel').innerText = param.tool_name;
+}
+
+
+
+
+
 loadAi(6);
