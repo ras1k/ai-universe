@@ -85,15 +85,21 @@ const displayDataDetails = (param) =>{
                         <p class="fw-bold">${param.description}
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis incidunt sint expedita, tenetur quo similique dolore soluta! Quisquam, repudiandae sunt.
                         </p>
-                        <div class="row row-cols-3 g-3">
+                        <div class="row d-flex gap-2 p-3 text-center justify-content-center">
                             <div class="col bg-light rounded">
-                                <p class="text-success"></p>
+                                <p class="text-success fw-bold p-3">
+                                ${param.pricing[0].price} /
+                                ${param.pricing[0].plan}</p>
                             </div>
                             <div class="col bg-light rounded">
-                                <p class="text-warning"></p>
+                                <p class="text-warning fw-bold p-3">
+                                ${param.pricing[1].price} /
+                                ${param.pricing[1].plan}</p>
                             </div>
                             <div class="col bg-light rounded">
-                                <p class="text-danger"></p>
+                                <p class="text-danger fw-bold p-3">
+                                ${param.pricing[2].price} /
+                                ${param.pricing[2].plan}</p></p>
                             </div>
                         </div>
                         <div class="row row-cols-2 g-3">
@@ -116,7 +122,7 @@ const displayDataDetails = (param) =>{
                         </div>
                 </div>
                 <div>
-                    <img src="${param.image_link[0]}" class="h-100 w-100 img-fluid" alt="">
+                    <img src="${param.image_link[0]}" class=" w-100" alt="">
                 </div>
             </div>
     `
