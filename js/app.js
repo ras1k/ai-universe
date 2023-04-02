@@ -23,10 +23,9 @@ const displayAi = (params, dataLimit) =>{
             <div class="card-body">
             <h3>Features : </h3>
             <ol>
-                <li>${param.features[0] ? param.features[0] : 'no feature'}</li>
-                <li>${param.features[1] ? param.features[1] : 'no feature'}</li>
-                <li>${param.features[2] ? param.features[2] : 'no feature'}</li>
-                <li>${param.features[3] ? param.features[3] : 'Null'}</li>
+                <li>${param.features[0] ? param.features[0] : ''}</li>
+                <li>${param.features[1] ? param.features[1] : ''}</li>
+                <li>${param.features[2] ? param.features[2] : ''}</li>
             </ol>
                 
             </div>
@@ -80,49 +79,54 @@ const loadData = async (id) => {
 const displayDataDetails = (param) =>{
     document.getElementById('dataModalLabel').innerText = param.tool_name;
     document.getElementById('data-details').innerHTML = `
-    <div class="d-flex gap-5 align-items-center justify-content-evenly">
+    <div class="d-md-flex gap-5 justify-content-center">
                 <div class="border border-danger-subtle rounded bg-danger-subtle bg-opacity-25 p-2">
                         <p class="fw-bold">${param.description}
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis incidunt sint expedita, tenetur quo similique dolore soluta! Quisquam, repudiandae sunt.
                         </p>
-                        <div class="row d-flex gap-2 p-3 text-center justify-content-center">
+                        <div class="row d-md-flex gap-2 p-3 text-center flex-md-nowrap flex-lg-nowrap justify-content-center">
                             <div class="col bg-light rounded">
-                                <p class="text-success fw-bold p-3">
+                                <p class="text-success fw-bold p-5">
                                 ${param.pricing[0].price} /
                                 ${param.pricing[0].plan}</p>
                             </div>
                             <div class="col bg-light rounded">
-                                <p class="text-warning fw-bold p-3">
+                                <p class="text-warning fw-bold p-5">
                                 ${param.pricing[1].price} /
                                 ${param.pricing[1].plan}</p>
                             </div>
                             <div class="col bg-light rounded">
-                                <p class="text-danger fw-bold p-3">
+                                <p class="text-danger fw-bold p-5">
                                 ${param.pricing[2].price} /
                                 ${param.pricing[2].plan}</p></p>
                             </div>
                         </div>
-                        <div class="row row-cols-2 g-3">
+                        <div class="row d-flex g-3">
                             <div class="col rounded">
+                            <h3 class="fw-bold">Features</h3>
                                 <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
+                                    <li class ="text-secondary">${param.features["1"].feature_name}</li>
+                                    <li class ="text-secondary">${param.features["2"].feature_name}</li>
+                                    <li class ="text-secondary">${param.features["3"].feature_name}</li>
                                 </ul>
                             </div>
                             <div class="col rounded">
+                            <h3 class="fw-bold">Integrations</h3>
                                 <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
+                                    <li class ="text-secondary">${param.integrations[0]}</li>
+                                    <li class ="text-secondary">${param.integrations[1]}</li>
+                                    <li class ="text-secondary">${param.integrations[2]}</li>
+                                    <li class ="text-secondary">${param.integrations[3] ? param.integrations[3] : '' }</li>
                                 </ul>
                             </div>
                         </div>
                 </div>
                 <div>
-                    <img src="${param.image_link[0]}" class=" w-100" alt="">
+                    <img src="${param.image_link[0]}" class="mb-5 w-100" alt="">
+                    <button class="btn btn-danger position-absolute top-0 end-0 m-4 d-none d-lg-block d-md-block">${param.accuracy['score']? param.accuracy['score'] : ''}% accuracy</button>
+                    <div class="text-center">
+                        <p class="fw-bold mb-2">${param.input_output_examples[0].input}</p>
+                        <p class="text-secondary">${param.input_output_examples[0].output}</p>
+                    </div>
                 </div>
             </div>
     `
