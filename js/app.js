@@ -6,15 +6,15 @@ const loadAi = async (dataLimit) => {
 }
 const paramContainer = document.getElementById('param-container');
 const displayAi = (params, dataLimit) => {
-    console.log(dataLimit);
+    // console.log(dataLimit);
     if (dataLimit && params.length > 6) {
         console.log(params.length)
         params = params.slice(0, dataLimit);
 
     }
-    // params = params.slice(0, 6);
+
     params.forEach(param => {
-        console.log(param);
+        // console.log(param);
         const paramDiv = document.createElement('div');
         paramDiv.classList.add('col');
         paramDiv.innerHTML = `
@@ -74,8 +74,6 @@ const loadData = async (id) => {
     fetch(url)
         .then(res => res.json())
         .then(data => displayDataDetails(data.data))
-    // const res = await fetch(url);
-    // const data = await res.json();
 }
 
 const displayDataDetails = (param) => {
